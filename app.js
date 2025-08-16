@@ -27,7 +27,8 @@ const MongoStore = require("connect-mongo");
 const { serialize } = require('v8');
 
 
-const dbUrl = 'mongodb://localhost:27017/yelp-camp';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+
 
 
 mongoose.connect(dbUrl, {
@@ -53,10 +54,10 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(mongoSanitize());
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
-    secret: 'thisshouldbeabettersecret',
     touchAfter: 24 * 60 * 60,
 })
 
@@ -79,7 +80,7 @@ const sessionConfig = {
 
 app.use(session(sessionConfig))
 app.use(flash())
-app.use(helmet())
+app.use(helmet({contentSecurityPolicy: false}))
 
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
@@ -173,7 +174,8 @@ app.use((err, req, res, next) => {
 //     res.send(camp);
 // })
 
-app.use(mongoSanitize());
-app.listen(3000, () => {
-    console.log("Serving On Port 3000")
-})
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Serving on port ${port}`);
+});
