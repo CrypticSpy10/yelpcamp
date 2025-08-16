@@ -54,7 +54,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(mongoSanitize());
+
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -174,7 +174,7 @@ app.use((err, req, res, next) => {
 //     res.send(camp);
 // })
 
-
+app.use(mongoSanitize());
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Serving on port ${port}`);
