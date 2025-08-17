@@ -58,7 +58,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 const store = MongoStore.create({
-    mongoUrl: 'mongodb://localhost:27017/yelp-camp',   //Add dbUrl here for deployment
+    mongoUrl: dbUrl,   //Add dbUrl here for deployment
     touchAfter: 24 * 60 * 60,
 })
 
