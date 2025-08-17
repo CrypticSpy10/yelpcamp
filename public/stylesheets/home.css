@@ -6,31 +6,58 @@ body {
     background-position: center;
     text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
-}
-.cover-container {
-  max-width: 60vw;
+  }
+  .cover-container {
+    max-width: 60vw;
+  }
+  
+.btn-secondary {
+    color: #333;
+    background-color: #fff;
+    border: 2px solid #fff;
+    text-shadow: none;
+    transition: all 0.3s ease;
 }
 
+.btn-secondary:hover {
+    background-color: #e6e6e6;  /* slightly darker on hover */
+    border-color: #fff;
+    color: #333;                 /* keep text color same */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+header > div {
+    display: flex !important;
+    justify-content: flex-start !important;  /* aligns heading left */
+    align-items: center !important;
+    width: 100%;
+    padding-right: 2rem; /* optional spacing from right edge */
+}
+
+/* Push nav to the right */
+.nav-masthead {
+    margin-left: auto;        /* pushes nav to the far right */
+    display: flex;
+    flex-direction: row;      /* horizontal on desktop */
+    gap: 1rem;                /* spacing between buttons */
+}
+
+/* Navbar links styling */
 .nav-link {
-    padding: 0.25rem 0;
-    /* font-weight: 700; */
-    color: rgba(255,255,255,0.5);
-    margin-left: 1rem;
-    border-bottom: 0.25rem solid transparent;
+    padding: 0.25rem 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
-.nav-link:hover{
-    color: rgba(255,255,255,0.5);
-    border-bottom-color:rgba(255,255,255,0.5);
+.nav-link:hover {
+    color: #fff;
+    border-bottom-color: #fff;
 }
 
 .nav-link.active {
-    color: white;
-    border-bottom-color:white;
-
-}
-
-.btn-secondary, .btn-secondary:hover{
-    color: #333;
-    text-shadow: none;
+    color: #fff;
+    border-bottom-color: #fff;
 }

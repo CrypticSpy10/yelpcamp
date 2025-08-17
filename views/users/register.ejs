@@ -1,26 +1,27 @@
 <% layout('layouts/boilerplate') %>
-<h1>Register</h1>
-<form action="/register" method="POST" class="validated-form" novalidate>
-    <div class="mb-3">
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username" required>
-        <div class="valid-feedback">
-            Looks good!
+<link rel="stylesheet" href="/stylesheets/auth.css">
+
+<div class="form-container">
+    <h2>Register</h2>
+    <form action="/register" method="POST" class="validated-form" novalidate>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="usernamespace" type="text" id="username" name="username" required autofocus>
+            <div class="valid-feedback">Looks good!</div>
         </div>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="email">Email Address</label>
-        <input class="form-control" type="email" id="email" name="email" required>
-        <div class="valid-feedback">
-            Looks good!
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="emailspace" type="email" id="email" name="email" required>
+            <div class="valid-feedback">Looks good!</div>
         </div>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password" required>
-        <div class="valid-feedback">
-            Looks good!
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="passwordspace" type="password" id="password" name="password" required>
+            <div class="valid-feedback">Looks good!</div>
         </div>
-    </div>
-    <button class="btn btn-success mb-3">Register</button>
-</form>
+
+        <button type="submit" class="form-btn">Register</button>
+    </form>
+</div>

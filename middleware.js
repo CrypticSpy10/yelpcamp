@@ -21,14 +21,15 @@ module.exports.storeReturnTo = (req, res, next) => {
 }
 
 module.exports.validateCampground = (req, res, next) => {
-    
-        const {error} = campgroundSchema.validate(req.body)
+    const { error } = campgroundSchema.validate(req.body);
     if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
+        const msg = error.details.map(el => el.message).join(', ');
+        return next(new ExpressError(msg, 400)); // pass message only
+    } else {
+        next();
     }
-    next();
-}
+};
+
 
 module.exports.isAuthor = async (req, res, next) => {
     const {id} = req.params;

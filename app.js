@@ -27,11 +27,12 @@ const MongoStore = require("connect-mongo");
 const { serialize } = require('v8');
 
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';    
 
 
 
-mongoose.connect(dbUrl, {
+mongoose.connect(dbUrl, {  //Add dbUrl here for deployment
     // ssl: true,
     // tls: true,
     // // tlsInsecure: false,
@@ -57,7 +58,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,
+    mongoUrl: 'mongodb://localhost:27017/yelp-camp',   //Add dbUrl here for deployment
     touchAfter: 24 * 60 * 60,
 })
 
@@ -164,6 +165,7 @@ app.use((err, req, res, next) => {
     const { statusCode = 500, message = "Something doesn't look right" } = err;
     if (!err.message) err.message = 'Oh No, Something Went Wrong!'
     res.status(statusCode).render('error', { err })
+    res.locals.mapboxToken = process.env.MAPBOX_TOKEN;
 
 })
 
