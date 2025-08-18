@@ -10,11 +10,16 @@
 
     <script crossorigin="anonymous" src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link crossorigin="anonymous" href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="/stylesheets/app.css">
-
+    <% if (typeof pageStyle !== 'undefined') { %>
+        <link rel="stylesheet" href="<%= pageStyle %>">
+    <% } else { %>
+        <link rel="stylesheet" href="/stylesheets/app.css">
+    <% } %>
+</head>
 </head>
 
 <body class="d-flex flex-column vh-100">
+    
     <%- include('../partials/navbar')%>
         <main class="container mt-5">
             <%- include('../partials/flash')%>

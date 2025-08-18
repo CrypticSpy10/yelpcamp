@@ -41,7 +41,8 @@ const CampgroundSchema = new Schema({
             ref: 'Review'
         }
     ]
-}, opts);
+}, opts,
+{ timestamps: true });; //For the Date of Creation of Campground
 
 CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
     return `<a href= "/campgrounds/${this._id}">${this.title} </a>`

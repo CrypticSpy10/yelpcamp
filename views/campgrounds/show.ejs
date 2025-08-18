@@ -1,6 +1,8 @@
 <% layout('layouts/boilerplate')%>
   <link rel="stylesheet" href="/stylesheets/stars.css">
+  <link rel="stylesheet" href="/stylesheets/show.css">
 
+  <body>
   <div class="container mt-3">
 
     <!-- Map row -->
@@ -63,7 +65,7 @@
             <% } %>
 
               <div class="card-footer text-muted">
-                Last Viewed: Recently
+                <p><%= timeago.format(campground.createdAt) %></p>
               </div>
         </div>
       </div>
@@ -127,7 +129,8 @@
       </div>
     </div>
   </div>
-
+</body>
+  
   <script>
     const mapToken = '<%-process.env.MAPBOX_TOKEN %>';
     const campground = <%- JSON.stringify(campground) %>  //Using VS Code's Format Document will break this line.

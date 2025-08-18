@@ -109,7 +109,11 @@ map.on('load', () => {
   map.on('click', 'unclustered-point', (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
     const { title, description, location, id } = e.features[0].properties;
-
+    map.easeTo({
+      center: coordinates,
+      zoom: 14, 
+      duration: 3000
+    });
     const popupContent = `
       <strong>${title}</strong><br>
       <small>${location}</small><br>

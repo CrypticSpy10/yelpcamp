@@ -25,6 +25,7 @@ const reviewRoutes = require('./routes/reviews.js');
 const MongoStore = require("connect-mongo");
 
 const { serialize } = require('v8');
+const timeago = require('timeago.js');
 
 
 
@@ -32,7 +33,7 @@ const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 
 
 
-mongoose.connect(dbUrl, {  //Add dbUrl here for deployment
+mongoose.connect('mongodb://localhost:27017/yelp-camp', {  //Add dbUrl here for deployment
     // ssl: true,
     // tls: true,
     // // tlsInsecure: false,
@@ -58,7 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,   //Add dbUrl here for deployment
+    mongoUrl: 'mongodb://localhost:27017/yelp-camp',   //Add dbUrl here for deployment
     touchAfter: 24 * 60 * 60,
 })
 
@@ -142,6 +143,11 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error')
     next();
 })
+
+app.use((req, res, next) => {
+  res.locals.timeago = timeago;  
+  next();
+});
 
 app.get('/fakeUser', async (req, res) => {
     const user = new User({ email: 'mehull@gmail.com', username: 'Mehul' });
