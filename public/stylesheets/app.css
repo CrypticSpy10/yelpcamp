@@ -148,15 +148,8 @@ p, a, li, button {
   font-family: 'Poppins', sans-serif;
 }
 
-/* body {
-  background: linear-gradient(to bottom, #1b1b1b, #262626);
-  color: #f0f0f0;
-  min-height: 100vh;
-  line-height: 1.6;
-} */
-
 body {
-    background: url("https://images.unsplash.com/photo-1559521783-1d1599583485?ixlib-rb-1.2.1&auto=format&fit=crop&w=1950&q=80") no-repeat center center;
+    background: url("/images/background.jpg") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
     color: #fff;
@@ -311,6 +304,27 @@ a:hover {
   .show-container {
     grid-template-columns: 1fr;
   }
+}
+
+.reviews-container {
+    max-height: 600px; /* Or whatever height you prefer */
+    overflow-y: auto;  /* Adds a scrollbar ONLY when content exceeds max-height */
+    padding-right: 10px; /* Adds some space for the scrollbar */
+}
+
+/* Optional: Style the scrollbar to match your dark theme */
+.reviews-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.reviews-container::-webkit-scrollbar-track {
+  background: #2c2c2c;
+  border-radius: 4px;
+}
+
+.reviews-container::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
 }
 
 /* ======================== EDIT PAGE ======================== */

@@ -33,7 +33,7 @@ const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 
 
 
-mongoose.connect(dbUrl, {  //Add dbUrl here for deployment
+mongoose.connect('mongodb://localhost:27017/yelp-camp', {  //Add dbUrl here for deployment
     // ssl: true,
     // tls: true,
     // // tlsInsecure: false,
@@ -59,7 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,   //Add dbUrl here for deployment
+    mongoUrl: 'mongodb://localhost:27017/yelp-camp',   //Add dbUrl here for deployment
     touchAfter: 24 * 60 * 60,
 })
 

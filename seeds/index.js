@@ -21,7 +21,7 @@ const seedDB = async () => {
     await Campground.deleteMany({});
     // const c = new Campground({title: 'purple field'});
     // await c.save();
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < 100; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
         const price = Math.round((Math.random() * 20 + 10) * 100) / 100;
         const camp = new Campground({
